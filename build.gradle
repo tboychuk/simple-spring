@@ -1,0 +1,55 @@
+group 'kuziv-star'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'war'
+
+sourceCompatibility = 1.5
+
+repositories {
+    maven { url 'http://maven.springframework.org/release' }
+    maven { url 'http://maven.springframework.org/milestone' }
+    maven { url 'http://maven.springframework.org/snapshot' }
+    maven { url 'http://download.java.net/maven/2' }
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.springframework:spring-context:$springVersion"
+    compile "org.springframework:spring-orm:$springVersion"
+    compile "org.springframework:spring-tx:$springVersion"
+    compile "org.springframework.data:spring-data-jpa:$springDataJpaVersion"
+
+
+    compile "org.springframework:spring-webmvc:$springVersion"
+    compile "org.springframework:spring-jdbc:$springVersion"
+
+    compile "org.hibernate:hibernate-entitymanager:$hibernateEntityManagerVersion"
+
+    compile "com.h2database:h2:$h2Version"
+    compile "org.apache.commons:commons-lang3:$commonsLangVersion"
+    compile "javax.inject:javax.inject:1"
+    compile "javax.servlet:jstl:$jstlVersion"
+
+    compile "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion"
+    compile 'com.fasterxml.jackson.datatype:jackson-datatype-hibernate4:2.4.3'
+
+
+    providedCompile "javax.servlet:javax.servlet-api:$servletApiVersion"
+    providedCompile "javax.servlet.jsp:jsp-api:$jspApiVersion"
+    providedCompile "javax.el:javax.el-api:$jspElVersion"
+
+    testCompile "junit:junit-dep:$junitVersion"
+    testCompile "org.springframework:spring-test:$springVersion"
+    testCompile "org.mockito:mockito-core:$mockitoVersion"
+    testCompile "org.hamcrest:hamcrest-library:$hamcrestVersion"
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.1'
+}
+
+war {
+    baseName = 'simple-spring'
+}
