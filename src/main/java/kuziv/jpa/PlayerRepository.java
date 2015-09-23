@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface PlayerRepository extends JpaRepository<Player, Long> {
     Player findByFirstName(String firstName);
-
+    Player findBySalary(Double salary);
     List<Player> findByTeamName(String teamName);
 
 }

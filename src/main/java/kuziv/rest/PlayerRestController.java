@@ -25,6 +25,12 @@ public class PlayerRestController {
         return repository.findOne(id);
     }
 
+    @RequestMapping(value = "/salary/{s}", method = RequestMethod.GET)
+    public Player getPlayerByS(@PathVariable Double s) {
+        return repository.findBySalary(s);
+    }
+
+
     @RequestMapping(value = "/team/{name}", method = RequestMethod.GET)
     public List<Player> getPlayer(@PathVariable String name) {
         return repository.findByTeamName(name);
